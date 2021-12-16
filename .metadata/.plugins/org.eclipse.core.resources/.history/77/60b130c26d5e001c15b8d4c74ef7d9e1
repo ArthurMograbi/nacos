@@ -1,0 +1,10 @@
+package com.alibaba.nacos.console.security.nacos;
+
+final class LockedUsers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

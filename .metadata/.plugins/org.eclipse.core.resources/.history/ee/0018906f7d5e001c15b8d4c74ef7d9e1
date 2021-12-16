@@ -1,0 +1,163 @@
+package com.alibaba.nacos.console.security.nacos;
+
+import com.alibaba.nacos.core.exception.KvStorageException;
+import com.alibaba.nacos.core.storage.StorageFactory;
+import com.alibaba.nacos.core.storage.kv.KvStorage;
+
+
+import java.io.File;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+
+
+public final class LockedUsers {
+	
+	private static String STORAGE_PATH = "nacos_spam_login_prevention";
+	
+	private static String SNAPSHOT_FILENAME = "snapshot";
+	
+	private static int TIMESTAMP_INDEX = 0;
+	
+	private static String SPLIT_REGEX = ",";
+	
+	private static long CONVERSION_CONSTANT = 1000;
+	
+	
+	private String dir;
+	
+	
+	private int logintries = 0; //Number of attempted login tries
+	
+    private static  int permittedtries = 3; //Number of allowed consecutive login tries
+    
+    private static int cooldowntime = 30;	//Time it takes (in seconds) to cooldown after consecutive failed login attempts
+    
+    private static Calendar cooldowncalendar = Calendar.getInstance();
+    
+    private Date currenttime;
+    
+    private long currentmillis;
+	
+    
+    
+    
+	private static LockedUsers instance;	//A variable guaranteeing singleton status to this class
+    
+	private KvStorage kvStorage;			//The kvStorage instance used to maintain continuity in the registry of locked out users
+	
+	private Collection<byte[]> time_names; /*The timestamp of the time of lockout and the username for each user who attempted login
+											in the last 5 minutes, separated by SPLIT_REGEX*/
+	
+	private Map<byte[],byte[]> storage_map;
+
+    private LockedUsers() {
+    	
+    	try {
+    		
+            String baseDir = System.getProperty("user.home");
+            dir = baseDir + File.separator + STORAGE_PATH;						//Setting the dir for future operations
+           
+            this.kvStorage = StorageFactory.createKvStorage(KvStorage.KvType.Memory, "", dir); //Switch to KvType.RocksDB once it's implementation gets fixed
+            
+            updateClean();
+            
+    	} catch (Exception e) {
+    		
+            e.printStackTrace();
+        }
+    	
+    }
+
+    
+    
+    public static LockedUsers getInstance() {
+    	
+        if (instance == null) {
+        	
+            instance = new LockedUsers();
+            
+        }
+        return instance;
+    }
+    
+    
+    
+    private void clearOld() {
+    	
+    	Iterator<Map.Entry<Integer, Integer>> tn_iterator = storage_map.entrySet().iterator();					// Creating an iterator from the time_names collection
+    	
+    	while(tn_iterator.hasNext()) {												// Looping over the created iterator
+    		
+    		byte[] raw_value = tn_iterator.next();
+    		String str_value = raw_value.toString();								//Converting to string so data can be more logically accessible
+    		
+    		String str_time = str_value.split(SPLIT_REGEX)[TIMESTAMP_INDEX];
+    		
+    		updateCurrentTime();
+    		
+    		long lockout_time;
+    		
+    		try{
+    			
+                lockout_time = (long) Integer.parseInt(str_time);					//Convert value to a long
+                
+            }
+            catch (NumberFormatException ex){
+            	
+                ex.printStackTrace();
+                lockout_time = currentmillis;
+                
+            }
+    		
+    		
+    		if ( (currentmillis - lockout_time) > (((long) cooldowntime)* CONVERSION_CONSTANT) ) {
+    			this.kvStorage.delete();
+    		}
+    		
+    	}	
+    	
+    }
+    
+    
+    
+    private void updateFromSnapshot() throws KvStorageException {
+    	
+    	this.kvStorage.snapshotLoad(this.dir+ File.separator+SNAPSHOT_FILENAME);	// Load From Snapshot
+    	
+        final List<byte[]> keys = this.kvStorage.allKeys();								// Retrieve all keys from snapshot 
+        
+        storage_map = this.kvStorage.batchGet(keys);				// Retrieve values from snapshot
+        
+        this.time_names=storage_map.values();										// Extract a Collection from the maps values
+        
+    }
+    
+    
+    
+    private void updateClean() throws KvStorageException {	/* An encapsulating method to guarantee correct order of execution for updateFromSnapshot
+    														and clearOld */
+    	updateFromSnapshot();
+    	
+        clearOld();
+        
+    }
+    
+    private void updateCurrentTime() {						// Utilty function  to update both currenttime and currentmillis
+    	
+    	currenttime = cooldowncalendar.getTime();
+    	
+    	currentmillis = currenttime.getTime();
+    	
+    }
+    
+    
+    private void lockUser(String user) {
+    	
+    }
+    
+}

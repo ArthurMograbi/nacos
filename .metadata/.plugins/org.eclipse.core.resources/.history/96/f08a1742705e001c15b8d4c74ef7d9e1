@@ -1,0 +1,36 @@
+package com.alibaba.nacos.console.security.nacos;
+
+import com.alibaba.nacos.core.storage.StorageFactory;
+import com.alibaba.nacos.core.storage.kv.KvStorage;
+
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+
+
+public final class LockedUsers {
+	private static LockedUsers instance;
+    public String value;
+	private KvStorage kvStorage;
+
+    private LockedUsers(String value) {
+    	try {
+            String baseDir = System.getProperty("user.home");
+            String dir = baseDir + File.separator + "nacos_f";
+            this.kvStorage = StorageFactory.createKvStorage(KvStorage.KvType.Memory, "", "\");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        this.value = value;
+    }
+
+    public static LockedUsers getInstance(String value) {
+        if (instance == null) {
+            instance = new LockedUsers(value);
+        }
+        return instance;
+    }
+	
+
+}

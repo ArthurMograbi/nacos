@@ -1,0 +1,646 @@
+[1mdiff --git a/client/src/main/java/com/alibaba/nacos/client/config/impl/ClientWorker.java b/client/src/main/java/com/alibaba/nacos/client/config/impl/ClientWorker.java[m
+[1mindex acd30aeb2..0e5f80070 100644[m
+[1m--- a/client/src/main/java/com/alibaba/nacos/client/config/impl/ClientWorker.java[m
+[1m+++ b/client/src/main/java/com/alibaba/nacos/client/config/impl/ClientWorker.java[m
+[36m@@ -765,58 +765,83 @@[m [mpublic class ClientWorker implements Closeable {[m
+             listenExecutebell.offer(bellItem);[m
+         }[m
+         [m
+[31m-        @Override[m
+[31m-        public void executeConfigListen() {[m
+[32m+[m[32m        public void HandleListenCaches(CacheData cacheData,Set<String> changeKeys,Map<String, Long> timestampMap) {[m
+[32m+[m[32m            String groupKey = GroupKey[m
+[32m+[m[32m                    .getKeyTenant(cacheData.dataId, cacheData.group, cacheData.getTenant());[m
+[32m+[m[32m            if (!changeKeys.contains(groupKey)) {[m
+[32m+[m[32m                //sync:cache data md5 = server md5 && cache data md5 = all listeners md5.[m
+[32m+[m[32m                synchronized (cacheData) {[m
+[32m+[m[32m                    if (!cacheData.getListeners().isEmpty()) {[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        Long previousTimesStamp = timestampMap.get(groupKey);[m
+[32m+[m[32m                        if (previousTimesStamp != null) {[m
+[32m+[m[32m                            if (!cacheData.getLastModifiedTs().compareAndSet(previousTimesStamp,[m
+[32m+[m[32m                                    System.currentTimeMillis())) {[m
+[32m+[m[32m                                return;[m
+[32m+[m[32m                            }[m
+[32m+[m[32m                        }[m
+[32m+[m[32m                        cacheData.setSyncWithServer(true);[m
+[32m+[m[32m                    }[m
+[32m+[m[32m                }[m
+[32m+[m[32m            }[m
+             [m
+[31m-            Map<String, List<CacheData>> listenCachesMap = new HashMap<String, List<CacheData>>(16);[m
+[31m-            Map<String, List<CacheData>> removeListenCachesMap = new HashMap<String, List<CacheData>>(16);[m
+[31m-            long now = System.currentTimeMillis();[m
+[31m-            boolean needAllSync = now - lastAllSyncTime >= ALL_SYNC_INTERNAL;[m
+[31m-            for (CacheData cache : cacheMap.get().values()) {[m
+[32m+[m[32m            cacheData.setInitializing(false);[m
+[32m+[m[41m        	[m
+[32m+[m[32m        }[m
+[32m+[m[41m        [m
+[32m+[m[32m        public void HandleSyncCache(CacheData cache, Map<String, List<CacheData>> listenCachesMap, Map<String, List<CacheData>> removeListenCachesMap, boolean needAllSync) {[m
+[32m+[m[41m        [m	[32msynchronized (cache) {[m
+                 [m
+[31m-                synchronized (cache) {[m
+[31m-                    [m
+[31m-                    //check local listeners consistent.[m
+[31m-                    if (cache.isSyncWithServer()) {[m
+[31m-                        cache.checkListenerMd5();[m
+[31m-                        if (!needAllSync) {[m
+[31m-                            continue;[m
+[32m+[m[32m                //check local listeners consistent.[m
+[32m+[m[32m                if (cache.isSyncWithServer()) {[m
+[32m+[m[32m                    cache.checkListenerMd5();[m
+[32m+[m[32m                    if (!needAllSync) {[m
+[32m+[m[32m                        return;[m
+[32m+[m[32m                    }[m
+[32m+[m[32m                }[m
+[32m+[m[41m                [m
+[32m+[m[32m                if (!CollectionUtils.isEmpty(cache.getListeners())) {[m
+[32m+[m[32m                    //get listen  config[m
+[32m+[m[32m                    if (!cache.isUseLocalConfigInfo()) {[m
+[32m+[m[32m                        List<CacheData> cacheDatas = listenCachesMap.get(String.valueOf(cache.getTaskId()));[m
+[32m+[m[32m                        if (cacheDatas == null) {[m
+[32m+[m[32m                            cacheDatas = new LinkedList<CacheData>();[m
+[32m+[m[32m                            listenCachesMap.put(String.valueOf(cache.getTaskId()), cacheDatas);[m
+                         }[m
+[32m+[m[32m                        cacheDatas.add(cache);[m
+[32m+[m[41m                        [m
+                     }[m
+[32m+[m[32m                } else if (CollectionUtils.isEmpty(cache.getListeners())) {[m
+                     [m
+[31m-                    if (!CollectionUtils.isEmpty(cache.getListeners())) {[m
+[31m-                        //get listen  config[m
+[31m-                        if (!cache.isUseLocalConfigInfo()) {[m
+[31m-                            List<CacheData> cacheDatas = listenCachesMap.get(String.valueOf(cache.getTaskId()));[m
+[31m-                            if (cacheDatas == null) {[m
+[31m-                                cacheDatas = new LinkedList<CacheData>();[m
+[31m-                                listenCachesMap.put(String.valueOf(cache.getTaskId()), cacheDatas);[m
+[31m-                            }[m
+[31m-                            cacheDatas.add(cache);[m
+[31m-                            [m
+[32m+[m[32m                    if (!cache.isUseLocalConfigInfo()) {[m
+[32m+[m[32m                        List<CacheData> cacheDatas = removeListenCachesMap.get(String.valueOf(cache.getTaskId()));[m
+[32m+[m[32m                        if (cacheDatas == null) {[m
+[32m+[m[32m                            cacheDatas = new LinkedList<CacheData>();[m
+[32m+[m[32m                            removeListenCachesMap.put(String.valueOf(cache.getTaskId()), cacheDatas);[m
+                         }[m
+[31m-                    } else if (CollectionUtils.isEmpty(cache.getListeners())) {[m
+[32m+[m[32m                        cacheDatas.add(cache);[m
+                         [m
+[31m-                        if (!cache.isUseLocalConfigInfo()) {[m
+[31m-                            List<CacheData> cacheDatas = removeListenCachesMap.get(String.valueOf(cache.getTaskId()));[m
+[31m-                            if (cacheDatas == null) {[m
+[31m-                                cacheDatas = new LinkedList<CacheData>();[m
+[31m-                                removeListenCachesMap.put(String.valueOf(cache.getTaskId()), cacheDatas);[m
+[31m-                            }[m
+[31m-                            cacheDatas.add(cache);[m
+[31m-                            [m
+[31m-                        }[m
+                     }[m
+                 }[m
+[31m-                [m
+             }[m
+[32m+[m[32m        }[m
+[32m+[m[41m        [m
+[32m+[m[32m        @Override[m
+[32m+[m[32m        public void executeConfigListen() {[m
+             [m
+[32m+[m[32m            Map<String, List<CacheData>> listenCachesMap = new HashMap<String, List<CacheData>>(16);[m
+[32m+[m[32m            Map<String, List<CacheData>> removeListenCachesMap = new HashMap<String, List<CacheData>>(16);[m
+[32m+[m[32m            long now = System.currentTimeMillis();[m
+[32m+[m[32m            boolean needAllSync = now - lastAllSyncTime >= ALL_SYNC_INTERNAL;[m
+[32m+[m[32m            for (CacheData cache : cacheMap.get().values()) HandleSyncCache(cache,listenCachesMap,removeListenCachesMap,needAllSync);[m
+             boolean hasChangedKeys = false;[m
+             [m
+[32m+[m[32m            if(removeListenCachesMap.isEmpty()) return;[m
+[32m+[m[41m            [m
+             if (!listenCachesMap.isEmpty()) {[m
+                 for (Map.Entry<String, List<CacheData>> entry : listenCachesMap.entrySet()) {[m
+                     String taskId = entry.getKey();[m
+[31m-                    Map<String, Long> timestampMap = new HashMap<>(listenCachesMap.size() * 2);[m
+[32m+[m[32m                    Map<String, Long> timestampMap = new HashMap<String, Long>(listenCachesMap.size() * 2);[m
+                     [m
+                     List<CacheData> listenCaches = entry.getValue();[m
+                     for (CacheData cacheData : listenCaches) {[m
+[36m@@ -847,34 +872,10 @@[m [mpublic class ClientWorker implements Closeable {[m
+                                 }[m
+                                 [m
+                             }[m
+[31m-                            [m
+                             //handler content configs[m
+[31m-                            for (CacheData cacheData : listenCaches) {[m
+[31m-                                String groupKey = GroupKey[m
+[31m-                                        .getKeyTenant(cacheData.dataId, cacheData.group, cacheData.getTenant());[m
+[31m-                                if (!changeKeys.contains(groupKey)) {[m
+[31m-                                    //sync:cache data md5 = server md5 && cache data md5 = all listeners md5.[m
+[31m-                                    synchronized (cacheData) {[m
+[31m-                                        if (!cacheData.getListeners().isEmpty()) {[m
+[31m-                                            [m
+[31m-                                            Long previousTimesStamp = timestampMap.get(groupKey);[m
+[31m-                                            if (previousTimesStamp != null) {[m
+[31m-                                                if (!cacheData.getLastModifiedTs().compareAndSet(previousTimesStamp,[m
+[31m-                                                        System.currentTimeMillis())) {[m
+[31m-                                                    continue;[m
+[31m-                                                }[m
+[31m-                                            }[m
+[31m-                                            cacheData.setSyncWithServer(true);[m
+[31m-                                        }[m
+[31m-                                    }[m
+[31m-                                }[m
+[31m-                                [m
+[31m-                                cacheData.setInitializing(false);[m
+[31m-                            }[m
+[31m-                            [m
+[32m+[m[32m                            for (CacheData cacheData : listenCaches) HandleListenCaches(cacheData,changeKeys,timestampMap);[m
+                         }[m
+                     } catch (Exception e) {[m
+[31m-                        [m
+                         LOGGER.error("Async listen config change error ", e);[m
+                         try {[m
+                             Thread.sleep(50L);[m
+[1mdiff --git a/client/src/main/java/com/alibaba/nacos/client/naming/remote/http/NamingHttpClientProxy.java b/client/src/main/java/com/alibaba/nacos/client/naming/remote/http/NamingHttpClientProxy.java[m
+[1mindex a85e0cba8..1fb2f62db 100644[m
+[1m--- a/client/src/main/java/com/alibaba/nacos/client/naming/remote/http/NamingHttpClientProxy.java[m
+[1m+++ b/client/src/main/java/com/alibaba/nacos/client/naming/remote/http/NamingHttpClientProxy.java[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-/*[m
+[32m+[m[32m/* // NOPMD by Arthur on 18/11/2021 11:02[m
+  * Copyright 1999-2018 Alibaba Group Holding Ltd.[m
+  *[m
+  * Licensed under the Apache License, Version 2.0 (the "License");[m
+[36m@@ -71,19 +71,21 @@[m [mimport static com.alibaba.nacos.client.utils.LogUtils.NAMING_LOGGER;[m
+  *[m
+  * @author nkorange[m
+  */[m
+[31m-public class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+[32m+[m[32mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {		 // NOPMD by Arthur on 18/11/2021 11:02[m
+     [m
+[31m-    private final NacosRestTemplate nacosRestTemplate = NamingHttpClientManager.getInstance().getNacosRestTemplate();[m
+[32m+[m[32m    private final NacosRestTemplate nacosRestTemplate = NamingHttpClientManager.getInstance().getNacosRestTemplate();	// Instantiate the a client manager with the rest template[m
+     [m
+[31m-    private static final int DEFAULT_SERVER_PORT = 8848;[m
+[32m+[m[32m    // Setting the default parameters for the module[m[41m [m
+[32m+[m[41m    [m
+[32m+[m[32m    private static final int DEFAULT_SERVER_PORT = 8848;	// Setting the default server port as 8848 // NOPMD by Arthur on 18/11/2021 11:03[m
+     [m
+     private static final String IP_PARAM = "ip";[m
+     [m
+     private static final String PORT_PARAM = "port";[m
+     [m
+[31m-    private static final String WEIGHT_PARAM = "weight";[m
+[32m+[m[32m    private static final String WEIGHT_PARAM = "weight";[m[41m [m
+     [m
+[31m-    private static final String ENABLE_PARAM = "enabled";[m
+[32m+[m[32m    private static final String ENABLE_PARAM = "enabled";	// Enable the use of parameters[m
+     [m
+     private static final String EPHEMERAL_PARAM = "ephemeral";[m
+     [m
+[36m@@ -91,9 +93,9 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     [m
+     private static final String SELECTOR_PARAM = "selector";[m
+     [m
+[31m-    private static final String HEALTHY_PARAM = "healthy";[m
+[32m+[m[32m    private static final String HEALTHY_PARAM = "healthy";[m[41m	[m
+     [m
+[31m-    private static final String PROTECT_THRESHOLD_PARAM = "protectThreshold";[m
+[32m+[m[32m    private static final String PROTECT_THRESHOLD_PARAM = "protectThreshold";	 // NOPMD by Arthur on 18/11/2021 11:03[m
+     [m
+     private static final String CLUSTERS_PARAM = "clusters";[m
+     [m
+[36m@@ -101,9 +103,9 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     [m
+     private static final String CLIENT_IP_PARAM = "clientIP";[m
+     [m
+[31m-    private static final String HEALTHY_ONLY_PARAM = "healthyOnly";[m
+[32m+[m[32m    private static final String HEALTHY_ONLY_PARAM = "healthyOnly"; // NOPMD by Arthur on 18/11/2021 11:03[m
+     [m
+[31m-    private static final String SERVICE_NAME_PARAM = "serviceName";[m
+[32m+[m[32m    private static final String SERVICE_NAME_PARAM = "serviceName"; // NOPMD by Arthur on 18/11/2021 11:03[m
+     [m
+     private final String namespaceId;[m
+     [m
+[36m@@ -111,14 +113,14 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     [m
+     private final BeatReactor beatReactor;[m
+     [m
+[31m-    private final PushReceiver pushReceiver;[m
+[32m+[m[32m    private final PushReceiver pushReceiver;	// A global push receiver[m[41m [m
+     [m
+[31m-    private final int maxRetry;[m
+[32m+[m[32m    private final int maxRetry;		// The maximum number of connection retries allowed[m
+     [m
+[31m-    private int serverPort = DEFAULT_SERVER_PORT;[m
+[32m+[m[32m    private int serverPort = DEFAULT_SERVER_PORT;	//Setting the server port of the module as the default server port -- 设置模块的服务器端口为默认服务器端口 // NOPMD by Arthur on 18/11/2021 11:02[m
+     [m
+[31m-    public NamingHttpClientProxy(String namespaceId, SecurityProxy securityProxy, ServerListManager serverListManager,[m
+[31m-            Properties properties, ServiceInfoHolder serviceInfoHolder) {[m
+[32m+[m[32m    public NamingHttpClientProxy(final String namespaceId,final SecurityProxy securityProxy, final ServerListManager serverListManager,[m
+[32m+[m[32m            final Properties properties, final ServiceInfoHolder serviceInfoHolder) {[m
+         super(securityProxy, properties);[m
+         this.serverListManager = serverListManager;[m
+         this.setServerPort(DEFAULT_SERVER_PORT);[m
+[36m@@ -130,7 +132,7 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     }[m
+     [m
+     @Override[m
+[31m-    public void onEvent(ServerListChangedEvent event) {[m
+[32m+[m[32m    public void onEvent(final ServerListChangedEvent event) {[m
+         // do nothing in http client[m
+     }[m
+     [m
+[36m@@ -140,13 +142,13 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     }[m
+     [m
+     @Override[m
+[31m-    public void registerService(String serviceName, String groupName, Instance instance) throws NacosException {[m
+[32m+[m[32m    public void registerService(final String serviceName,final String groupName,final Instance instance) throws NacosException {[m
+         [m
+         NAMING_LOGGER.info("[REGISTER-SERVICE] {} registering service {} with instance: {}", namespaceId, serviceName,[m
+                 instance);[m
+[31m-        String groupedServiceName = NamingUtils.getGroupedName(serviceName, groupName);[m
+[32m+[m[32m        final String groupedServiceName = NamingUtils.getGroupedName(serviceName, groupName); // NOPMD by Arthur on 18/11/2021 11:03[m
+         if (instance.isEphemeral()) {[m
+[31m-            BeatInfo beatInfo = beatReactor.buildBeatInfo(groupedServiceName, instance);[m
+[32m+[m[32m            final BeatInfo beatInfo = beatReactor.buildBeatInfo(groupedServiceName, instance);[m
+             beatReactor.addBeatInfo(groupedServiceName, beatInfo);[m
+         }[m
+         final Map<String, String> params = new HashMap<String, String>(16);[m
+[36m@@ -167,7 +169,7 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     }[m
+     [m
+     @Override[m
+[31m-    public void deregisterService(String serviceName, String groupName, Instance instance) throws NacosException {[m
+[32m+[m[32m    public void deregisterService(final String serviceName,final String groupName,final Instance instance) throws NacosException {[m
+         NAMING_LOGGER[m
+                 .info("[DEREGISTER-SERVICE] {} deregistering service {} with instance: {}", namespaceId, serviceName,[m
+                         instance);[m
+[36m@@ -187,7 +189,7 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     }[m
+     [m
+     @Override[m
+[31m-    public void updateInstance(String serviceName, String groupName, Instance instance) throws NacosException {[m
+[32m+[m[32m    public void updateInstance(final String serviceName,final String groupName,final Instance instance) throws NacosException {[m
+         NAMING_LOGGER[m
+                 .info("[UPDATE-SERVICE] {} update service {} with instance: {}", namespaceId, serviceName, instance);[m
+         [m
+[36m@@ -207,8 +209,9 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     }[m
+     [m
+     @Override[m
+[31m-    public ServiceInfo queryInstancesOfService(String serviceName, String groupName, String clusters, int udpPort,[m
+[31m-            boolean healthyOnly) throws NacosException {[m
+[32m+[m[32m    public ServiceInfo queryInstancesOfService(final String serviceName,final String groupName,final String clusters,final int udpPort,[m
+[32m+[m[32m            final boolean healthyOnly) throws NacosException {[m
+[32m+[m[41m    [m	[32mServiceInfo outputServiceinfo;[m
+         final Map<String, String> params = new HashMap<String, String>(8);[m
+         params.put(CommonParams.NAMESPACE_ID, namespaceId);[m
+         params.put(CommonParams.SERVICE_NAME, NamingUtils.getGroupedName(serviceName, groupName));[m
+[36m@@ -216,15 +219,19 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+         params.put(UDP_PORT_PARAM, String.valueOf(udpPort));[m
+         params.put(CLIENT_IP_PARAM, NetUtils.localIP());[m
+         params.put(HEALTHY_ONLY_PARAM, String.valueOf(healthyOnly));[m
+[31m-        String result = reqApi(UtilAndComs.nacosUrlBase + "/instance/list", params, HttpMethod.GET);[m
+[32m+[m[32m        final String result = reqApi(UtilAndComs.nacosUrlBase + "/instance/list", params, HttpMethod.GET);[m
+[32m+[m[41m        [m
+         if (StringUtils.isNotEmpty(result)) {[m
+[31m-            return JacksonUtils.toObj(result, ServiceInfo.class);[m
+[32m+[m[32m            outputServiceinfo = JacksonUtils.toObj(result, ServiceInfo.class);[m
+[32m+[m[32m        } else {[m
+[32m+[m[41m        [m	[32moutputServiceinfo = new ServiceInfo(NamingUtils.getGroupedName(serviceName, groupName), clusters);[m
+         }[m
+[31m-        return new ServiceInfo(NamingUtils.getGroupedName(serviceName, groupName), clusters);[m
+[32m+[m[41m        [m
+[32m+[m[32m        return outputServiceinfo;[m
+     }[m
+     [m
+     @Override[m
+[31m-    public Service queryService(String serviceName, String groupName) throws NacosException {[m
+[32m+[m[32m    public Service queryService(final String serviceName,final String groupName) throws NacosException {[m
+         NAMING_LOGGER.info("[QUERY-SERVICE] {} query service : {}, {}", namespaceId, serviceName, groupName);[m
+         [m
+         final Map<String, String> params = new HashMap<String, String>(3);[m
+[36m@@ -232,12 +239,12 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+         params.put(CommonParams.SERVICE_NAME, serviceName);[m
+         params.put(CommonParams.GROUP_NAME, groupName);[m
+         [m
+[31m-        String result = reqApi(UtilAndComs.nacosUrlService, params, HttpMethod.GET);[m
+[32m+[m[32m        final String result = reqApi(UtilAndComs.nacosUrlService, params, HttpMethod.GET);[m
+         return JacksonUtils.toObj(result, Service.class);[m
+     }[m
+     [m
+     @Override[m
+[31m-    public void createService(Service service, AbstractSelector selector) throws NacosException {[m
+[32m+[m[32m    public void createService(final Service service, final AbstractSelector selector) throws NacosException {[m
+         [m
+         NAMING_LOGGER.info("[CREATE-SERVICE] {} creating service : {}", namespaceId, service);[m
+         [m
+[36m@@ -254,7 +261,7 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     }[m
+     [m
+     @Override[m
+[31m-    public boolean deleteService(String serviceName, String groupName) throws NacosException {[m
+[32m+[m[32m    public boolean deleteService(final String serviceName,final String groupName) throws NacosException {[m
+         NAMING_LOGGER.info("[DELETE-SERVICE] {} deleting service : {} with groupName : {}", namespaceId, serviceName,[m
+                 groupName);[m
+         [m
+[36m@@ -263,12 +270,12 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+         params.put(CommonParams.SERVICE_NAME, serviceName);[m
+         params.put(CommonParams.GROUP_NAME, groupName);[m
+         [m
+[31m-        String result = reqApi(UtilAndComs.nacosUrlService, params, HttpMethod.DELETE);[m
+[32m+[m[32m        final String result = reqApi(UtilAndComs.nacosUrlService, params, HttpMethod.DELETE);[m
+         return "ok".equals(result);[m
+     }[m
+     [m
+     @Override[m
+[31m-    public void updateService(Service service, AbstractSelector selector) throws NacosException {[m
+[32m+[m[32m    public void updateService(final Service service,final AbstractSelector selector) throws NacosException {[m
+         NAMING_LOGGER.info("[UPDATE-SERVICE] {} updating service : {}", namespaceId, service);[m
+         [m
+         final Map<String, String> params = new HashMap<String, String>(6);[m
+[36m@@ -290,13 +297,13 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+      * @return beat result[m
+      * @throws NacosException nacos exception[m
+      */[m
+[31m-    public JsonNode sendBeat(BeatInfo beatInfo, boolean lightBeatEnabled) throws NacosException {[m
+[32m+[m[32m    public JsonNode sendBeat(final BeatInfo beatInfo,final boolean lightBeatEnabled) throws NacosException {[m
+         [m
+         if (NAMING_LOGGER.isDebugEnabled()) {[m
+             NAMING_LOGGER.debug("[BEAT] {} sending beat to server: {}", namespaceId, beatInfo.toString());[m
+         }[m
+[31m-        Map<String, String> params = new HashMap<String, String>(8);[m
+[31m-        Map<String, String> bodyMap = new HashMap<String, String>(2);[m
+[32m+[m[32m        final Map<String, String> params = new HashMap<String, String>(8);[m
+[32m+[m[32m        final Map<String, String> bodyMap = new HashMap<String, String>(2);[m
+         if (!lightBeatEnabled) {[m
+             bodyMap.put("beat", JacksonUtils.toJson(beatInfo));[m
+         }[m
+[36m@@ -305,29 +312,30 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+         params.put(CommonParams.CLUSTER_NAME, beatInfo.getCluster());[m
+         params.put(IP_PARAM, beatInfo.getIp());[m
+         params.put(PORT_PARAM, String.valueOf(beatInfo.getPort()));[m
+[31m-        String result = reqApi(UtilAndComs.nacosUrlBase + "/instance/beat", params, bodyMap, HttpMethod.PUT);[m
+[32m+[m[32m        final String result = reqApi(UtilAndComs.nacosUrlBase + "/instance/beat", params, bodyMap, HttpMethod.PUT);[m
+         return JacksonUtils.toObj(result);[m
+     }[m
+     [m
+     @Override[m
+     public boolean serverHealthy() {[m
+[31m-        [m
+[32m+[m[32m        boolean success;[m
+         try {[m
+[31m-            String result = reqApi(UtilAndComs.nacosUrlBase + "/operator/metrics", new HashMap<String, String>(2),[m
+[32m+[m[32m            final String result = reqApi(UtilAndComs.nacosUrlBase + "/operator/metrics", new HashMap<String, String>(2),[m
+                     HttpMethod.GET);[m
+[31m-            JsonNode json = JacksonUtils.toObj(result);[m
+[31m-            String serverStatus = json.get("status").asText();[m
+[31m-            return "UP".equals(serverStatus);[m
+[31m-        } catch (Exception e) {[m
+[31m-            return false;[m
+[32m+[m[32m            final JsonNode json = JacksonUtils.toObj(result);[m
+[32m+[m[32m            final String serverStatus = json.get("status").asText();[m
+[32m+[m[32m            success = "UP".equals(serverStatus);[m
+[32m+[m[32m        } catch (Exception e) { // NOPMD by Arthur on 18/11/2021 11:02[m
+[32m+[m[32m           success = false;[m
+         }[m
+[32m+[m[32m        return success;[m
+     }[m
+     [m
+     @Override[m
+[31m-    public ListView<String> getServiceList(int pageNo, int pageSize, String groupName, AbstractSelector selector)[m
+[32m+[m[32m    public final ListView<String> getServiceList(final int pageNo,final int pageSize, final String groupName,final AbstractSelector selector)[m
+             throws NacosException {[m
+         [m
+[31m-        Map<String, String> params = new HashMap<String, String>(4);[m
+[32m+[m[32m        final Map<String, String> params = new HashMap<String, String>(4);[m
+         params.put("pageNo", String.valueOf(pageNo));[m
+         params.put("pageSize", String.valueOf(pageSize));[m
+         params.put(CommonParams.NAMESPACE_ID, namespaceId);[m
+[36m@@ -338,7 +346,7 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+                 case none:[m
+                     break;[m
+                 case label:[m
+[31m-                    ExpressionSelector expressionSelector = (ExpressionSelector) selector;[m
+[32m+[m[32m                    final ExpressionSelector expressionSelector = (ExpressionSelector) selector; // NOPMD by Arthur on 18/11/2021 11:03[m
+                     params.put(SELECTOR_PARAM, JacksonUtils.toJson(expressionSelector));[m
+                     break;[m
+                 default:[m
+[36m@@ -346,10 +354,10 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+             }[m
+         }[m
+         [m
+[31m-        String result = reqApi(UtilAndComs.nacosUrlBase + "/service/list", params, HttpMethod.GET);[m
+[32m+[m[32m        final String result = reqApi(UtilAndComs.nacosUrlBase + "/service/list", params, HttpMethod.GET);[m
+         [m
+[31m-        JsonNode json = JacksonUtils.toObj(result);[m
+[31m-        ListView<String> listView = new ListView<String>();[m
+[32m+[m[32m        final JsonNode json = JacksonUtils.toObj(result);[m
+[32m+[m[32m        final ListView<String> listView = new ListView<String>();[m
+         listView.setCount(json.get("count").asInt());[m
+         listView.setData(JacksonUtils.toObj(json.get("doms").toString(), new TypeReference<List<String>>() {[m
+         }));[m
+[36m@@ -358,35 +366,36 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     }[m
+     [m
+     @Override[m
+[31m-    public ServiceInfo subscribe(String serviceName, String groupName, String clusters) throws NacosException {[m
+[32m+[m	[32mpublic final ServiceInfo subscribe(final String serviceName,final String groupName,final String clusters) throws NacosException {[m
+         return queryInstancesOfService(serviceName, groupName, clusters, pushReceiver.getUdpPort(), false);[m
+     }[m
+     [m
+     @Override[m
+[31m-    public void unsubscribe(String serviceName, String groupName, String clusters) throws NacosException {[m
+[32m+[m[32m    public void unsubscribe(final String serviceName,final String groupName,final String clusters) throws NacosException {[m
+[32m+[m[41m    [m	[32m//Unimplemented[m[41m [m
+     }[m
+     [m
+     @Override[m
+[31m-    public void updateBeatInfo(Set<Instance> modifiedInstances) {[m
+[31m-        for (Instance instance : modifiedInstances) {[m
+[31m-            String key = beatReactor.buildKey(instance.getServiceName(), instance.getIp(), instance.getPort());[m
+[32m+[m[32m    public void updateBeatInfo(final Set<Instance> modifiedInstances) {[m
+[32m+[m[32m        for (final Instance instance : modifiedInstances) {[m
+[32m+[m[32m            final String key = beatReactor.buildKey(instance.getServiceName(), instance.getIp(), instance.getPort());[m
+             if (beatReactor.dom2Beat.containsKey(key) && instance.isEphemeral()) {[m
+[31m-                BeatInfo beatInfo = beatReactor.buildBeatInfo(instance);[m
+[32m+[m[32m                final BeatInfo beatInfo = beatReactor.buildBeatInfo(instance);[m
+                 beatReactor.addBeatInfo(instance.getServiceName(), beatInfo);[m
+             }[m
+         }[m
+     }[m
+     [m
+[31m-    public String reqApi(String api, Map<String, String> params, String method) throws NacosException {[m
+[31m-        return reqApi(api, params, Collections.EMPTY_MAP, method);[m
+[32m+[m[32m    public String reqApi(final String api,final Map<String, String> params,final String method) throws NacosException {[m
+[32m+[m[32m        return reqApi(api, params, Collections.<String, String>emptyMap(), method);[m
+     }[m
+     [m
+[31m-    public String reqApi(String api, Map<String, String> params, Map<String, String> body, String method)[m
+[32m+[m[32m    public String reqApi(final String api,final Map<String, String> params,final Map<String, String> body,final String method)[m
+             throws NacosException {[m
+         return reqApi(api, params, body, serverListManager.getServerList(), method);[m
+     }[m
+     [m
+[31m-    /**[m
+[32m+[m[32m    /** // NOPMD by Arthur on 18/11/2021 11:02[m
+      * Request api.[m
+      *[m
+      * @param api     api[m
+[36m@@ -397,8 +406,8 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+      * @return result[m
+      * @throws NacosException nacos exception[m
+      */[m
+[31m-    public String reqApi(String api, Map<String, String> params, Map<String, String> body, List<String> servers,[m
+[31m-            String method) throws NacosException {[m
+[32m+[m[32m    public String reqApi(final String api, final Map<String, String> params,final Map<String, String> body, final List<String> servers,[m
+[32m+[m[32m            final String method) throws NacosException {[m
+         [m
+         params.put(CommonParams.NAMESPACE_ID, getNamespaceId());[m
+         [m
+[36m@@ -409,10 +418,10 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+         NacosException exception = new NacosException();[m
+         [m
+         if (serverListManager.isDomain()) {[m
+[31m-            String nacosDomain = serverListManager.getNacosDomain();[m
+[32m+[m[32m            final String nacosDomain = serverListManager.getNacosDomain();[m
+             for (int i = 0; i < maxRetry; i++) {[m
+                 try {[m
+[31m-                    return callServer(api, params, body, nacosDomain, method);[m
+[32m+[m[32m                    return callServer(api, params, body, nacosDomain, method); // NOPMD by Arthur on 18/11/2021 11:02[m
+                 } catch (NacosException e) {[m
+                     exception = e;[m
+                     if (NAMING_LOGGER.isDebugEnabled()) {[m
+[36m@@ -421,11 +430,11 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+                 }[m
+             }[m
+         } else {[m
+[31m-            Random random = new Random(System.currentTimeMillis());[m
+[32m+[m[32m            final Random random = new Random(System.currentTimeMillis());[m
+             int index = random.nextInt(servers.size());[m
+             [m
+             for (int i = 0; i < servers.size(); i++) {[m
+[31m-                String server = servers.get(index);[m
+[32m+[m[41m            [m	[32mString server = servers.get(index);[m
+                 try {[m
+                     return callServer(api, params, body, server, method);[m
+                 } catch (NacosException e) {[m
+[36m@@ -446,7 +455,7 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+         [m
+     }[m
+     [m
+[31m-    /**[m
+[32m+[m[32m    /** // NOPMD by Arthur on 18/11/2021 11:02[m
+      * Call server.[m
+      *[m
+      * @param api       api[m
+[36m@@ -457,26 +466,26 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+      * @return result[m
+      * @throws NacosException nacos exception[m
+      */[m
+[31m-    public String callServer(String api, Map<String, String> params, Map<String, String> body, String curServer,[m
+[31m-            String method) throws NacosException {[m
+[31m-        long start = System.currentTimeMillis();[m
+[31m-        long end = 0;[m
+[32m+[m[32m    public String callServer(final String api,final Map<String, String> params,final Map<String, String> body, String curServer,[m
+[32m+[m[32m            final String method) throws NacosException {[m
+[32m+[m[32m        final long start = System.currentTimeMillis();[m
+[32m+[m[32m        long end;[m
+         params.putAll(getSecurityHeaders());[m
+         params.putAll(getSpasHeaders(params.get(SERVICE_NAME_PARAM)));[m
+[31m-        Header header = NamingHttpUtil.builderHeader();[m
+[32m+[m[32m        final Header header = NamingHttpUtil.builderHeader();[m
+         [m
+         String url;[m
+         if (curServer.startsWith(UtilAndComs.HTTPS) || curServer.startsWith(UtilAndComs.HTTP)) {[m
+             url = curServer + api;[m
+         } else {[m
+             if (!InternetAddressUtil.containsPort(curServer)) {[m
+[31m-                curServer = curServer + InternetAddressUtil.IP_PORT_SPLITER + serverPort;[m
+[32m+[m[32m                curServer = curServer + InternetAddressUtil.IP_PORT_SPLITER + serverPort; // NOPMD by Arthur on 18/11/2021 11:02[m
+             }[m
+             url = NamingHttpClientManager.getInstance().getPrefix() + curServer + api;[m
+         }[m
+         [m
+         try {[m
+[31m-            HttpRestResult<String> restResult = nacosRestTemplate[m
+[32m+[m[32m            final HttpRestResult<String> restResult = nacosRestTemplate[m
+                     .exchangeForm(url, header, Query.newInstance().initParams(params), body, method, String.class);[m
+             end = System.currentTimeMillis();[m
+             [m
+[36m@@ -484,13 +493,13 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+                     .observe(end - start);[m
+             [m
+             if (restResult.ok()) {[m
+[31m-                return restResult.getData();[m
+[32m+[m[32m                return restResult.getData(); // NOPMD by Arthur on 18/11/2021 11:02[m
+             }[m
+             if (HttpStatus.SC_NOT_MODIFIED == restResult.getCode()) {[m
+                 return StringUtils.EMPTY;[m
+             }[m
+             throw new NacosException(restResult.getCode(), restResult.getMessage());[m
+[31m-        } catch (Exception e) {[m
+[32m+[m[32m        } catch (Exception e) { // NOPMD by Arthur on 18/11/2021 11:02[m
+             NAMING_LOGGER.error("[NA] failed to request", e);[m
+             throw new NacosException(NacosException.SERVER_ERROR, e);[m
+         }[m
+[36m@@ -500,12 +509,12 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+         return namespaceId;[m
+     }[m
+     [m
+[31m-    public void setServerPort(int serverPort) {[m
+[32m+[m[32m    public void setServerPort(final int serverPort) {[m
+         this.serverPort = serverPort;[m
+         [m
+[31m-        String sp = System.getProperty(SystemPropertyKeyConst.NAMING_SERVER_PORT);[m
+[31m-        if (StringUtils.isNotBlank(sp)) {[m
+[31m-            this.serverPort = Integer.parseInt(sp);[m
+[32m+[m[32m        final String systemprop = System.getProperty(SystemPropertyKeyConst.NAMING_SERVER_PORT);[m
+[32m+[m[32m        if (StringUtils.isNotBlank(systemprop)) {[m
+[32m+[m[32m            this.serverPort = Integer.parseInt(systemprop);[m
+         }[m
+     }[m
+     [m
+[36m@@ -515,7 +524,7 @@[m [mpublic class NamingHttpClientProxy extends AbstractNamingClientProxy {[m
+     [m
+     @Override[m
+     public void shutdown() throws NacosException {[m
+[31m-        String className = this.getClass().getName();[m
+[32m+[m[32m        final String className = this.getClass().getName();[m
+         NAMING_LOGGER.info("{} do shutdown begin", className);[m
+         beatReactor.shutdown();[m
+         NamingHttpClientManager.getInstance().shutdown();[m
+[1mdiff --git a/config/src/main/java/com/alibaba/nacos/config/server/constant/PropertiesConstant.java b/config/src/main/java/com/alibaba/nacos/config/server/constant/PropertiesConstant.java[m
+[1mindex fae96351c..ad52e81e6 100644[m
+[1m--- a/config/src/main/java/com/alibaba/nacos/config/server/constant/PropertiesConstant.java[m
+[1m+++ b/config/src/main/java/com/alibaba/nacos/config/server/constant/PropertiesConstant.java[m
+[36m@@ -57,6 +57,5 @@[m [mpublic class PropertiesConstant {[m
+     [m
+     public static final String MYSQL = "mysql";[m
+     [m
+[31m-    public static final String EMBEDDED_STORAGE = "embeddedStorage";[m
+     [m
+ }[m
+[1mdiff --git a/config/src/main/java/com/alibaba/nacos/config/server/utils/PropertyUtil.java b/config/src/main/java/com/alibaba/nacos/config/server/utils/PropertyUtil.java[m
+[1mindex 85076305f..cdf850d29 100644[m
+[1m--- a/config/src/main/java/com/alibaba/nacos/config/server/utils/PropertyUtil.java[m
+[1m+++ b/config/src/main/java/com/alibaba/nacos/config/server/utils/PropertyUtil.java[m
+[36m@@ -247,7 +247,7 @@[m [mpublic class PropertyUtil implements ApplicationContextInitializer<ConfigurableA[m
+     }[m
+     [m
+     public static void setEmbeddedStorage(boolean embeddedStorage) {[m
+[31m-        PropertyUtil.embeddedStorage = embeddedStorage;[m
+[32m+[m[32m        PropertyUtil.embeddedStorage = embeddedStorage|| Boolean.getBoolean(PropertiesConstant.EMBEDDED_STORAGE);[m
+     }[m
+     [m
+     private void loadSetting() {[m
+[36m@@ -291,9 +291,7 @@[m [mpublic class PropertyUtil implements ApplicationContextInitializer<ConfigurableA[m
+             if (isUseExternalDB()) {[m
+                 setEmbeddedStorage(false);[m
+             } else {[m
+[31m-                boolean embeddedStorage =[m
+[31m-                        PropertyUtil.embeddedStorage || Boolean.getBoolean(PropertiesConstant.EMBEDDED_STORAGE);[m
+[31m-                setEmbeddedStorage(embeddedStorage);[m
+[32m+[m[32m                setEmbeddedStorage(PropertyUtil.embeddedStorage;);[m
+                 [m
+                 // If the embedded data source storage is not turned on, it is automatically[m
+                 // upgraded to the external data source storage, as before[m

@@ -4576,3 +4576,267 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.alibaba.n
 2021-12-16 12:56:28,243 [Worker-86: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/console: com.alibaba.nacos:nacos-console:2.0.3 with classifier  to /console/target/classes
 2021-12-16 12:56:28,244 [Worker-86: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/istio: com.alibaba.nacos:nacos-istio:2.0.3 with classifier  to /istio/target/classes
 2021-12-16 12:56:28,244 [Worker-86: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/address: com.alibaba.nacos:nacos-address:2.0.3 with classifier  to /address/target/classes
+2021-12-16 13:24:55,443 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2021-12-16 13:25:04,446 [Worker-1: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-api:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\api\pom.xml.
+2021-12-16 13:25:05,628 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:05,635 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-16 13:25:05,640 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:05,640 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\api\src\test\resources
+2021-12-16 13:25:08,380 [Worker-1: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-common:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\common\pom.xml.
+2021-12-16 13:25:08,667 [Worker-1: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:08,946 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:08,947 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-16 13:25:08,994 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:08,995 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-16 13:25:10,984 [Worker-1: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-client:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\client\pom.xml.
+2021-12-16 13:25:11,249 [Worker-1: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:11,250 [Worker-1: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:11,485 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:11,485 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-16 13:25:11,520 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:11,520 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\client\src\test\resources
+2021-12-16 13:25:12,486 [Worker-1: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-consistency:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\consistency\pom.xml.
+2021-12-16 13:25:12,673 [Worker-1: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:12,675 [Worker-1: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:13,014 [Worker-1: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:13,016 [Worker-1: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:13,835 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:13,836 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-16 13:25:13,861 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:13,862 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\consistency\src\test\resources
+2021-12-16 13:25:14,201 [Worker-5: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-distribution:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\distribution\pom.xml.
+2021-12-16 13:25:14,770 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/console: com.alibaba.nacos:nacos-console:2.0.3 with classifier  to /console/target/classes
+2021-12-16 13:25:14,771 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/config: com.alibaba.nacos:nacos-config:2.0.3 with classifier  to /config/target/classes
+2021-12-16 13:25:14,774 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:14,776 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:14,776 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:14,776 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:14,777 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:14,777 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:14,791 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/naming: com.alibaba.nacos:nacos-naming:2.0.3 with classifier  to /naming/target/classes
+2021-12-16 13:25:14,795 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/cmdb: com.alibaba.nacos:nacos-cmdb:2.0.3 with classifier  to /cmdb/target/classes
+2021-12-16 13:25:14,795 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/istio: com.alibaba.nacos:nacos-istio:2.0.3 with classifier  to /istio/target/classes
+2021-12-16 13:25:14,795 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/client: com.alibaba.nacos:nacos-client:2.0.3 with classifier  to /client/target/classes
+2021-12-16 13:25:15,915 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-sys:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\sys\pom.xml.
+2021-12-16 13:25:16,154 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:16,156 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:16,481 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:16,482 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-16 13:25:16,507 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:16,507 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2021-12-16 13:25:16,851 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-auth:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\auth\pom.xml.
+2021-12-16 13:25:17,085 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:17,087 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:17,092 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:17,451 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:17,451 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\auth\src\main\resources
+2021-12-16 13:25:17,453 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:17,454 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\auth\src\test\resources
+2021-12-16 13:25:20,157 [Worker-0: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-core:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\core\pom.xml.
+2021-12-16 13:25:20,521 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:20,522 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:20,524 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:20,525 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:20,525 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:21,032 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:21,033 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2021-12-16 13:25:21,081 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:21,082 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-16 13:25:21,543 [Worker-0: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-example:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\example\pom.xml.
+2021-12-16 13:25:21,858 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:21,860 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:21,864 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:21,864 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:21,865 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:21,865 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:21,873 [Worker-0: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/client: com.alibaba.nacos:nacos-client:2.0.3 with classifier  to /client/target/classes
+2021-12-16 13:25:22,224 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:22,224 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\example\src\main\resources
+2021-12-16 13:25:22,226 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:22,227 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\example\src\test\resources
+2021-12-16 13:25:25,132 [Worker-21: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-config:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\config\pom.xml.
+2021-12-16 13:25:25,508 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:25,513 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:25,513 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:25,513 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:25,513 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:25,514 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:25,992 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:25,992 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-12-16 13:25:26,065 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:26,066 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2021-12-16 13:25:26,437 [Worker-21: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-cmdb:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\cmdb\pom.xml.
+2021-12-16 13:25:26,803 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:26,803 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:26,804 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:26,804 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:26,805 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:26,816 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:27,231 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:27,232 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-16 13:25:27,234 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:27,234 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\cmdb\src\test\resources
+2021-12-16 13:25:31,788 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-naming:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\naming\pom.xml.
+2021-12-16 13:25:32,202 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:32,203 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:32,204 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:32,205 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:32,205 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:32,213 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:32,234 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/cmdb: com.alibaba.nacos:nacos-cmdb:2.0.3 with classifier  to /cmdb/target/classes
+2021-12-16 13:25:32,694 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:32,694 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-12-16 13:25:32,778 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:32,778 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2021-12-16 13:25:34,300 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-istio:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\istio\pom.xml.
+2021-12-16 13:25:34,677 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:34,680 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/client: com.alibaba.nacos:nacos-client:2.0.3 with classifier  to /client/target/classes
+2021-12-16 13:25:34,682 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/config: com.alibaba.nacos:nacos-config:2.0.3 with classifier  to /config/target/classes
+2021-12-16 13:25:34,694 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/naming: com.alibaba.nacos:nacos-naming:2.0.3 with classifier  to /naming/target/classes
+2021-12-16 13:25:34,699 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/cmdb: com.alibaba.nacos:nacos-cmdb:2.0.3 with classifier  to /cmdb/target/classes
+2021-12-16 13:25:34,699 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:34,699 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:34,699 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:34,700 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:34,700 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:35,367 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:35,369 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/client: com.alibaba.nacos:nacos-client:2.0.3 with classifier  to /client/target/classes
+2021-12-16 13:25:35,371 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/config: com.alibaba.nacos:nacos-config:2.0.3 with classifier  to /config/target/classes
+2021-12-16 13:25:35,378 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/naming: com.alibaba.nacos:nacos-naming:2.0.3 with classifier  to /naming/target/classes
+2021-12-16 13:25:35,381 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/cmdb: com.alibaba.nacos:nacos-cmdb:2.0.3 with classifier  to /cmdb/target/classes
+2021-12-16 13:25:35,382 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:35,382 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:35,382 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:35,383 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:35,383 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:43,719 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:43,720 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2021-12-16 13:25:43,797 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:43,797 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\istio\src\test\resources
+2021-12-16 13:25:44,530 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-console:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\console\pom.xml.
+2021-12-16 13:25:44,846 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/config: com.alibaba.nacos:nacos-config:2.0.3 with classifier  to /config/target/classes
+2021-12-16 13:25:44,849 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:44,851 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:44,851 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:44,852 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:44,852 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:44,852 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:44,864 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/naming: com.alibaba.nacos:nacos-naming:2.0.3 with classifier  to /naming/target/classes
+2021-12-16 13:25:44,867 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/cmdb: com.alibaba.nacos:nacos-cmdb:2.0.3 with classifier  to /cmdb/target/classes
+2021-12-16 13:25:44,867 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/istio: com.alibaba.nacos:nacos-istio:2.0.3 with classifier  to /istio/target/classes
+2021-12-16 13:25:44,867 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/client: com.alibaba.nacos:nacos-client:2.0.3 with classifier  to /client/target/classes
+2021-12-16 13:25:45,373 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:45,376 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 131 resources
+2021-12-16 13:25:48,575 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:48,575 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\console\src\test\resources
+2021-12-16 13:25:48,962 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-address:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\address\pom.xml.
+2021-12-16 13:25:49,279 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/naming: com.alibaba.nacos:nacos-naming:2.0.3 with classifier  to /naming/target/classes
+2021-12-16 13:25:49,279 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:49,279 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:49,280 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:49,280 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:49,280 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:49,285 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:49,695 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:49,696 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2021-12-16 13:25:49,746 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:49,746 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\address\src\test\resources
+2021-12-16 13:25:50,451 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:naming-test:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\test\naming-test\pom.xml.
+2021-12-16 13:25:50,874 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:50,880 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/client: com.alibaba.nacos:nacos-client:2.0.3 with classifier  to /client/target/classes
+2021-12-16 13:25:50,882 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/config: com.alibaba.nacos:nacos-config:2.0.3 with classifier  to /config/target/classes
+2021-12-16 13:25:50,892 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/naming: com.alibaba.nacos:nacos-naming:2.0.3 with classifier  to /naming/target/classes
+2021-12-16 13:25:50,895 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/cmdb: com.alibaba.nacos:nacos-cmdb:2.0.3 with classifier  to /cmdb/target/classes
+2021-12-16 13:25:50,895 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:50,895 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:50,896 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:50,896 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:50,896 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:50,900 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/console: com.alibaba.nacos:nacos-console:2.0.3 with classifier  to /console/target/classes
+2021-12-16 13:25:50,901 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/istio: com.alibaba.nacos:nacos-istio:2.0.3 with classifier  to /istio/target/classes
+2021-12-16 13:25:50,902 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/address: com.alibaba.nacos:nacos-address:2.0.3 with classifier  to /address/target/classes
+2021-12-16 13:25:51,408 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:51,409 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\test\naming-test\src\main\resources
+2021-12-16 13:25:51,410 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:51,411 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-16 13:25:52,027 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:core-test:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\test\core-test\pom.xml.
+2021-12-16 13:25:52,342 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:52,349 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/client: com.alibaba.nacos:nacos-client:2.0.3 with classifier  to /client/target/classes
+2021-12-16 13:25:52,350 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/config: com.alibaba.nacos:nacos-config:2.0.3 with classifier  to /config/target/classes
+2021-12-16 13:25:52,359 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/naming: com.alibaba.nacos:nacos-naming:2.0.3 with classifier  to /naming/target/classes
+2021-12-16 13:25:52,361 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/cmdb: com.alibaba.nacos:nacos-cmdb:2.0.3 with classifier  to /cmdb/target/classes
+2021-12-16 13:25:52,361 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:52,361 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:52,361 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:52,362 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:52,362 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:52,365 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/console: com.alibaba.nacos:nacos-console:2.0.3 with classifier  to /console/target/classes
+2021-12-16 13:25:52,366 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/istio: com.alibaba.nacos:nacos-istio:2.0.3 with classifier  to /istio/target/classes
+2021-12-16 13:25:52,367 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/address: com.alibaba.nacos:nacos-address:2.0.3 with classifier  to /address/target/classes
+2021-12-16 13:25:52,751 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:52,751 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\test\core-test\src\main\resources
+2021-12-16 13:25:52,753 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:52,753 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2021-12-16 13:25:53,359 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.alibaba.nacos:config-test:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\test\config-test\pom.xml.
+2021-12-16 13:25:53,723 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:53,728 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/client: com.alibaba.nacos:nacos-client:2.0.3 with classifier  to /client/target/classes
+2021-12-16 13:25:53,730 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/config: com.alibaba.nacos:nacos-config:2.0.3 with classifier  to /config/target/classes
+2021-12-16 13:25:53,739 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/naming: com.alibaba.nacos:nacos-naming:2.0.3 with classifier  to /naming/target/classes
+2021-12-16 13:25:53,742 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/cmdb: com.alibaba.nacos:nacos-cmdb:2.0.3 with classifier  to /cmdb/target/classes
+2021-12-16 13:25:53,742 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:53,743 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:53,743 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:53,743 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:53,743 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:53,747 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/console: com.alibaba.nacos:nacos-console:2.0.3 with classifier  to /console/target/classes
+2021-12-16 13:25:53,748 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/istio: com.alibaba.nacos:nacos-istio:2.0.3 with classifier  to /istio/target/classes
+2021-12-16 13:25:53,748 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/address: com.alibaba.nacos:nacos-address:2.0.3 with classifier  to /address/target/classes
+2021-12-16 13:25:54,168 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:54,169 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\test\config-test\src\main\resources
+2021-12-16 13:25:54,170 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:25:54,170 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2021-12-16 13:25:54,281 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.alibaba.nacos:nacos-test:2.0.3 @ C:\Users\Arthur\Desktop\Code\nacos\test\pom.xml.
+2021-12-16 13:25:54,593 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:25:54,597 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/client: com.alibaba.nacos:nacos-client:2.0.3 with classifier  to /client/target/classes
+2021-12-16 13:25:54,599 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/config: com.alibaba.nacos:nacos-config:2.0.3 with classifier  to /config/target/classes
+2021-12-16 13:25:54,605 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/naming: com.alibaba.nacos:nacos-naming:2.0.3 with classifier  to /naming/target/classes
+2021-12-16 13:25:54,607 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/cmdb: com.alibaba.nacos:nacos-cmdb:2.0.3 with classifier  to /cmdb/target/classes
+2021-12-16 13:25:54,608 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:25:54,608 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:25:54,608 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:25:54,608 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:25:54,608 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:25:54,611 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/console: com.alibaba.nacos:nacos-console:2.0.3 with classifier  to /console/target/classes
+2021-12-16 13:25:54,611 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/istio: com.alibaba.nacos:nacos-istio:2.0.3 with classifier  to /istio/target/classes
+2021-12-16 13:25:54,612 [Worker-22: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/address: com.alibaba.nacos:nacos-address:2.0.3 with classifier  to /address/target/classes
+2021-12-16 13:26:41,325 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/config: com.alibaba.nacos:nacos-config:2.0.3 with classifier  to /config/target/classes
+2021-12-16 13:26:41,327 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/api: com.alibaba.nacos:nacos-api:2.0.3 with classifier  to /api/target/classes
+2021-12-16 13:26:41,328 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.alibaba.nacos:nacos-core:2.0.3 with classifier  to /core/target/classes
+2021-12-16 13:26:41,328 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/common: com.alibaba.nacos:nacos-common:2.0.3 with classifier  to /common/target/classes
+2021-12-16 13:26:41,329 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/consistency: com.alibaba.nacos:nacos-consistency:2.0.3 with classifier  to /consistency/target/classes
+2021-12-16 13:26:41,329 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/auth: com.alibaba.nacos:nacos-auth:2.0.3 with classifier  to /auth/target/classes
+2021-12-16 13:26:41,329 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/sys: com.alibaba.nacos:nacos-sys:2.0.3 with classifier  to /sys/target/classes
+2021-12-16 13:26:41,337 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/naming: com.alibaba.nacos:nacos-naming:2.0.3 with classifier  to /naming/target/classes
+2021-12-16 13:26:41,340 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/cmdb: com.alibaba.nacos:nacos-cmdb:2.0.3 with classifier  to /cmdb/target/classes
+2021-12-16 13:26:41,340 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/istio: com.alibaba.nacos:nacos-istio:2.0.3 with classifier  to /istio/target/classes
+2021-12-16 13:26:41,340 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/client: com.alibaba.nacos:nacos-client:2.0.3 with classifier  to /client/target/classes
+2021-12-16 13:26:41,359 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:26:41,373 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 131 resources
+2021-12-16 13:26:41,432 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:26:41,432 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\console\src\test\resources
+2021-12-16 13:26:59,330 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:26:59,349 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 131 resources
+2021-12-16 13:26:59,369 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:26:59,369 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\console\src\test\resources
+2021-12-16 13:28:12,568 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:28:12,587 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 131 resources
+2021-12-16 13:28:12,604 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:28:12,604 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\console\src\test\resources
+2021-12-16 13:29:25,238 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:29:25,249 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 131 resources
+2021-12-16 13:29:25,261 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:29:25,261 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\console\src\test\resources
+2021-12-16 13:29:47,965 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:29:47,976 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 131 resources
+2021-12-16 13:29:47,988 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-16 13:29:47,988 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Arthur\Desktop\Code\nacos\console\src\test\resources
